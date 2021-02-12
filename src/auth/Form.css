@@ -1,0 +1,21 @@
+.LoginForm,
+.SignupForm,
+.SearchForm,
+.ProfileForm {
+  max-width: 600px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+.LoginForm-input,
+.SignupForm-input, 
+.SearchForm-searchbar,
+.ProfileForm-input {
+  text-align: center;
+}
+
+.ProfileForm-username {
+  background-color: rgb(167, 202, 255);
+  padding: .5rem 0;
+  border-radius: 3px;
+}
