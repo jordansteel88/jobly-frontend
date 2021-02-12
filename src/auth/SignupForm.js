@@ -19,7 +19,7 @@ const SignupForm = ({ register }) => {
     evt.preventDefault();
     let res = await register(formData);
 
-    res.success ? history.push("/companies") : setErrors(res.errors);
+    res.success ? history.push("/companies") : setErrors(res.err);
   }
 
   const handleChange = (evt) => {
