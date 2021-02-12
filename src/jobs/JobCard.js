@@ -1,11 +1,21 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import {Card, CardBody, CardTitle, CardSubtitle, CardText, Button} from "reactstrap";
 import "./JobCard.css"
 import UserContext from "../auth/UserContext";
 
 const JobCard = ({ id, title, salary, equity, companyName }) => {
   const { hasApplied, apply } = useContext(UserContext)
+  const [applied, setApplied] = useState();
 
+  useEffect(function updateApplied() {
+    setApplied(hasApplied(id));
+  }, [id, hasApplied]);
+
+  const handleApply = async (evt) => {
+    if (hasApplied(id)) return;
+    apply(id);
+    setApplied(true);
+  }
 
   return (
     <div className="JobCard">
@@ -17,7 +27,9 @@ const JobCard = ({ id, title, salary, equity, companyName }) => {
               Salary: {salary} <br></br>
               Equity: {equity} <br></br>
           </CardText>
-          <Button color="primary" className="mt-2">Apply</Button>
+          <Button color="primary" className="mt-2" onClick={handleApply} disabled={applied}>
+            {applied ? "Applied" : "Apply"}
+          </Button>
         </CardBody>
       </Card>    
     </div>
