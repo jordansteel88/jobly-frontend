@@ -19,7 +19,6 @@ const ProfileForm = () => {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("submitted");
 
     let profileData = {
       firstName: formData.firstName,

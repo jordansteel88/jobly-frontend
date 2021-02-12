@@ -21,9 +21,6 @@ const App = () => {
     } else {
       localStorage.setItem("token", token)
     }
-
-    console.log(`token in LS: ${localStorage.getItem("token")}`);
-    console.log(`currentUser: ${currentUser}`);
   }, [token, currentUser])
 
 
@@ -52,7 +49,6 @@ const App = () => {
   const logout = () => {
     setCurrentUser(null);
     setToken(null);
-    console.log(`LO currentUser ${currentUser}`);  
   }
 
   useEffect(function getUserData() {
@@ -62,7 +58,6 @@ const App = () => {
           JoblyApi.token = token;
           let { username } = jwt.decode(token);
           let currentUser = await JoblyApi.getCurrentUser(username);
-          // console.log(`HOOK currentUser: ${currentUser}`);
           setCurrentUser(currentUser);
         } catch (err) {
           console.error("Problem retrieving user data", err);

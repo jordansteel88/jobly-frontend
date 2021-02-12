@@ -38,7 +38,6 @@ class JoblyApi {
 
   static async register(data) {
     let res = await this.request('auth/register', data, "post");
-    console.log(`res: ${res}`);
     return res.token;
   }  
   
@@ -49,7 +48,6 @@ class JoblyApi {
 
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);
-    // console.log(res.user);
     return res.user;
   }
 
